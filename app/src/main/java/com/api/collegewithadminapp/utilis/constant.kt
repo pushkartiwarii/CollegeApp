@@ -11,4 +11,5 @@ object constant {
     const val BANNER = "banner"
 
     const val isAdmin = true
+
 }

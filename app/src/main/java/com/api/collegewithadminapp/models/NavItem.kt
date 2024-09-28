@@ -2,7 +2,8 @@ package com.api.collegewithadminapp.models
 
 data class NavItem(
     val title: String,
-    val iconL: Int
+    val iconL: Int,
+    val routes: String
 
 )
 

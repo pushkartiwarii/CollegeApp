@@ -1,5 +1,6 @@
 package com.api.collegewithadminapp.ui.screens
 
+import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -56,6 +57,7 @@ import com.api.collegewithadminapp.models.NavItem
 import com.api.collegewithadminapp.navigation.Routes
 import com.api.collegewithadminapp.ui.theme.Purple40
 import kotlinx.coroutines.launch
+import okhttp3.Route
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -72,16 +74,22 @@ fun BottomNav(navController: NavController) {
     val list= listOf(
         NavItem(
             title = "Website",
-            iconL = R.drawable.website
+            iconL = R.drawable.website,
+            routes = Routes.AboutUs.route
+
+
         ),  NavItem(
             title = "Notice",
-            iconL = R.drawable.notice
+            iconL = R.drawable.notice,
+            routes = Routes.AboutUs.route
         ),  NavItem(
             title = "Notes",
-            iconL = R.drawable.notes
+            iconL = R.drawable.notes,
+            routes = Routes.AboutUs.route
         ),  NavItem(
             title = "Contact Us",
-            iconL = R.drawable.contact
+            iconL = R.drawable.contact,
+            routes = Routes.AboutUs.route
         ),
 
     )
@@ -102,7 +110,7 @@ fun BottomNav(navController: NavController) {
                         ) {
                             // Rounded app icon
                             Image(
-                                painter = painterResource(id = R.drawable.faculty), // Replace with your app icon resource
+                                painter = painterResource(id = R.drawable.applogos), // Replace with your app icon resource
                                 contentDescription = null,
                                 modifier = Modifier
                                     .size(60.dp)
@@ -127,6 +135,7 @@ fun BottomNav(navController: NavController) {
                             label = { Text(text = navigationItem.title) },
                             selected = index == selectedItemIndex,
                             onClick = {
+                                navController.navigate(Routes.AboutUs.route)
                                Toast.makeText(context, navigationItem.title, Toast.LENGTH_SHORT).show()
                                 scope.launch {
                                     drawerState.close()
@@ -201,6 +210,7 @@ fun BottomNav(navController: NavController) {
 
 }
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun MyBottomNav(navController: NavController) {
     val backStackEntry = navController.currentBackStackEntryAsState()
